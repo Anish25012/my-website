@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hey Dhara 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffd6e8, #ffe4f2);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(255, 100, 150, 0.3);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .question {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      animation: slideIn 2s ease-out;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 10px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yes {
+      background-color: #ff6fa1;
+      color: white;
+    }
+
+    .yes:hover {
+      background-color: #ff3d7a;
+    }
+
+    .no {
+      background-color: #ddd;
+      color: #444;
+      position: relative;
+    }
+
+    .no:hover {
+      top: -10px;
+      left: 10px;
+      background-color: #ccc;
+    }
+
+    .response {
+      font-size: 1.5rem;
+      color: #ff4081;
+      margin-top: 2rem;
+      animation: popIn 0.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hey Dhara 💕</h1>
+    <div class="question">Will you go out with me? 🥺</div>
+    <button class="yes" onclick="showLove()">Yes 💖</button>
+    <button class="no" onmouseover="moveButton(this)">No 😢</button>
+    <div id="response" class="response" style="display:none;">YAY!!! 🥰💞 Meet me at Liverpool Street 🏙️</div>
+  </div>
+
+  <script>
+    function showLove() {
+      document.getElementById("response").style.display = "block";
+      confetti();
+    }
+
+    function moveButton(btn) {
+      const x = Math.floor(Math.random() * 300) - 150;
+      const y = Math.floor(Math.random() * 300) - 150;
+      btn.style.position = 'relative';
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    // Basic confetti effect
+    function confetti() {
+      for (let i = 0; i < 150; i++) {
+        const conf = document.createElement('div');
+        conf.style.width = '10px';
+        conf.style.height = '10px';
+        conf.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        conf.style.position = 'fixed';
+        conf.style.left = Math.random() * 100 + '%';
+        conf.style.top = '-20px';
+        conf.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+        conf.style.opacity = '0.8';
+        conf.style.borderRadius = '50%';
+        document.body.appendChild(conf);
+      }
+    }
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fall {
+        to {
+          transform: translateY(110vh);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
